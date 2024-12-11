@@ -5,11 +5,11 @@ void define_commands(int argc, char *str);
 
 int main(int argc, char *argv[]){
     publication *pub;
-    pub = creat_publication()
+    // pub = creat_publication();
 }
 
-// void define_commands(int argc, char *argv){
-//     for  (int i; i < argc; i++){
+void define_commands(int argc, char *argv){
+    for  (int i; i < argc; i++){
 
-//     }
-// }
+    }
+}

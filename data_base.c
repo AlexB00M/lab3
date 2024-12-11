@@ -13,22 +13,22 @@
 publication *creat_publication(char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC, int pages, int cout_quotes){
     publication *pub = (publication *)malloc(sizeof(publication));
 
-    pub->*name_publication = name_publication;
-    pub->*surname = surname;
-    pub->*iinitials = iinitials;
-    pub->*name_journal = name_journal;
-    pub->*date = date;
-    pub->*tom = tom;
-    pub->*in_RINC = in_RINC;
-    pub->*pages = pages;
-    pub->*cout_quotes = cout_quotes;
+    pub->name_publication = name_publication;
+    pub->surname = surname;
+    pub->iinitials = iinitials;
+    pub->name_journal = name_journal;
+    pub->date = date;
+    pub->tom = tom;
+    pub->in_RINC = in_RINC;
+    pub->pages = pages;
+    pub->cout_quotes = cout_quotes;
     return pub;
 }
 
-data_base init_base(){
+data_base *init_base(){
     data_base *base = (data_base *)malloc(sizeof(data_base));
 
-    base-size = 0;
+    base->size = 0;
     base->head = NULL;
     base->tail = NULL;
     return base;
@@ -58,15 +58,15 @@ void pop_end(data_base *base){
     
 }
 
-void base_size(data_base *base){
+int base_size(data_base *base){
     return base->size;
 }
 
-void base_head(data_base *base){
+publication *base_head(data_base *base){
     return base->head;
 }
 
-void base_tail(data_base *base){
+publication *base_tail(data_base *base){
     return base->tail;
 }
 

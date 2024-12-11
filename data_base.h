@@ -1,5 +1,5 @@
-#include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct publication{
     char *name_publication;
@@ -19,7 +19,7 @@ typedef struct data_base{
     publication *tail;
 }data_base;
 
-publication *creat_publication();
+publication *creat_publication(char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC, int pages, int cout_quotes);
 data_base *init_base();
 
 void push_at_ptr(data_base *base, publication *ptr);
@@ -30,9 +30,9 @@ void pop_at_ptr(data_base *base, publication *ptr);
 void pop_front(data_base *base);
 void pop_end(data_base *base);
 
-void base_size(data_base *base);
-void base_head(data_base *base);
-void base_tail(data_base *base);
+int base_size(data_base *base);
+publication *base_head(data_base *base);
+publication *base_tail(data_base *base);
 
 void next_at_ptr(publication *pub);
 void prev_at_ptr(publication *pub);
