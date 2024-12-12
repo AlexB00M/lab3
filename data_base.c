@@ -22,6 +22,7 @@ publication *creat_publication(char *name_publication, char *surname, char *iini
     pub->in_RINC = in_RINC;
     pub->pages = pages;
     pub->cout_quotes = cout_quotes;
+    pub->before = base->head;
     return pub;
 }
 
@@ -29,22 +30,34 @@ data_base *init_base(){
     data_base *base = (data_base *)malloc(sizeof(data_base));
 
     base->size = 0;
-    base->head = NULL;
+    base->head = NULL; 
     base->tail = NULL;
     return base;
 }
 
-void push_at_ptr(data_base *base, publication *ptr){
-
+void push_at_ptr(data_base *base, publication *pub){
+    int size = base->size++;
+    if(base->head == NULL){
+        base->head = pub;
+        base->tail = pub;
+    }
 }
 
-void push_front(data_base *base){
-
+void push_front(data_base *base, publication *pub){
+    int size = base->size++;
+    pub->before = base->head;
+    base->head = pub;
+    if(base->tail == NULL)
+        base->tail = pub;
 }
 
-void push_end(data_base *base){
-    
-}
+void push_end(data_base *base, publication *pub){
+    int size = base->size++;
+    pub->before = NULL;
+    base->tail->before = pub;
+    if(base->head == NULL)
+        base->head = pub;
+}   
 
 void pop_at_ptr(data_base *base, publication *ptr){
 
@@ -70,10 +83,10 @@ publication *base_tail(data_base *base){
     return base->tail;
 }
 
-void next_at_ptr(publication *pub){
+publication *next_at_ptr(publication *pub){
 
 }
 
-void prev_at_ptr(publication *pub){
+publication *prev_at_ptr(publication *pub){
     
 }
