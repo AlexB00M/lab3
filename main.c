@@ -3,6 +3,7 @@
 
 void define_commands(int argc, char *str);
 void print_stack(stack *head);
+void print_publication(publication *p);
 
 int main(int argc, char *argv[]){
     stack *head = NULL;
@@ -19,10 +20,10 @@ int main(int argc, char *argv[]){
     push_front(&head, pub4);
     print_stack(head);
     printf("###########\n");
-    pop_index(&head, 0);
-    print_stack(head);
-    pop_index(&head, 2);
-    print_stack(head);
+    publication *p = next_at_ptr(head, pub3);
+    print_publication(p);
+    p = prev_at_ptr(head, pub3);
+    print_publication(p);
     return 0;
 }
 void print_stack(stack *head){
@@ -38,6 +39,9 @@ void print_stack(stack *head){
         i--;
     }
     printf("\n");
+}
+void print_publication(publication *p){
+    printf("pages: %d, cout_quotes: %d\n", p->pages, p->cout_quotes);
 }
 // void define_commands(int argc, char *argv){
 //     for  (int i; i < argc; i++){

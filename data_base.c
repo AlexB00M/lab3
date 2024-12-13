@@ -137,10 +137,19 @@ stack *stack_tail(stack *head){
     return NULL; // no elements
 }
 
-stack *next_at_ptr(stack *head, publication *pub){
-
+publication *next_at_ptr(stack *head, publication *pub){
+    stack *tmp = head;
+    while (tmp->before->pub != pub){
+        tmp = tmp->before;
+    }
+    return tmp->pub;
 }
 
-stack *prev_at_ptr(stack *head, publication *pub){
-    
+publication *prev_at_ptr(stack *head, publication *pub){
+    stack *tmp = head;
+    while (tmp->pub != pub){
+        tmp = tmp->before;
+    }
+    return tmp->before->pub; 
 }
+

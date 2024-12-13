@@ -43,5 +43,5 @@ int pop_end(stack **head);
 stack *stack_tail(stack *head);
 
 // Ptr
-stack *next_at_ptr(stack *head, publication *pub);
-stack *prev_at_ptr(stack *head, publication *pub);
+publication *next_at_ptr(stack *head, publication *pub);
+publication *prev_at_ptr(stack *head, publication *pub);
