@@ -12,11 +12,16 @@ int main(int argc, char *argv[]){
     publication *pub4 = creat_publication(4, 4);
     push_front(&head, pub1);
     print_stack(head);
-    push_to_index(&head, pub2, 0);
+    push_front(&head, pub2);
     print_stack(head);
-    push_to_index(&head, pub3, 1);
+    push_front(&head, pub3);
     print_stack(head);
-    push_to_index(&head, pub4, 2);
+    push_front(&head, pub4);
+    print_stack(head);
+    printf("###########\n");
+    pop_index(&head, 0);
+    print_stack(head);
+    pop_index(&head, 2);
     print_stack(head);
     return 0;
 }
@@ -32,6 +37,7 @@ void print_stack(stack *head){
         p = p->before;
         i--;
     }
+    printf("\n");
 }
 // void define_commands(int argc, char *argv){
 //     for  (int i; i < argc; i++){

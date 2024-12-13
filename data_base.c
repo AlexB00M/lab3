@@ -37,7 +37,6 @@ stack *create_stack(stack *before){
 
 stack *get_ptr_by_index(stack *head, int index){
     int size = stack_size(head);
-    printf("%d\n",size);
     if (index < size && index >= 0){
         stack *head_tmp = head;
         for (int i = size - 1; i > index; i--)
@@ -50,7 +49,7 @@ stack *get_ptr_by_index(stack *head, int index){
     }
 }
 
-int push_to_index(stack **head, publication *pub, int index){
+int push_index(stack **head, publication *pub, int index){
     stack *p = get_ptr_by_index(*head, index);
     if (p != NULL){
         stack *st = create_stack(p->before);
@@ -81,16 +80,44 @@ void push_end(stack **head, publication *pub){
     }
 }   
 
-void pop_at_ptr(stack **head, publication *ptr){
-
+int pop_index(stack **head, int index){
+    if (*head != NULL){
+        if (index == stack_size(*head) - 1){
+            pop_front(head);
+        } else if (index == 0){
+            pop_end(head);
+        } else {
+            stack *tmp = get_ptr_by_index(*head, index + 1);
+            stack *to_del = tmp->before;
+            tmp->before = tmp->before->before;
+            free(to_del);
+            return 1;
+        }
+    } else {
+        return 0;
+    }
 }
 
-void pop_front(stack **head){
-
+int pop_front(stack **head){
+    if (*head != NULL){
+        stack *tmp = *head;
+        *head = (*head)->before;
+        free(tmp);
+        return 1;
+    } else {
+        return 0;// no elements
+    }
 }
 
-void pop_end(stack **head){
-    
+int pop_end(stack **head){
+    if (*head != NULL){
+        stack *tmp = get_ptr_by_index(*head, 1);
+        free(tmp->before);
+        tmp->before = NULL;
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 int stack_size(stack *head){
