@@ -1,32 +1,5 @@
 #include "data_base.h"
-/*
-Название публикации: строка
-Фамилия первого автора: строка
-Инициалы первого автора: строка
-Название журнала: строка
-Год публикации: четырехзначное число
-Том журнала: целое число
-Входит в РИНЦ: логическое значение
-Количество страниц: целое число
-Цитирований: целое число
-*/
-//char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC, int pages, int cout_quotes
-publication *creat_publication(int pages, int cout_quotes){
-    publication *pub = (publication *)malloc(sizeof(publication));
 
-    // pub->name_publication = name_publication;
-    // pub->surname = surname;
-    // pub->iinitials = iinitials;
-    // pub->name_journal = name_journal;
-    // pub->date = date;
-    // pub->tom = tom;
-    // pub->in_RINC = in_RINC;
-    pub->pages = pages;
-    pub->cout_quotes = cout_quotes;
-    return pub;
-}
-
-// skack *head = create_stack()
 stack *create_stack(stack *before){
     stack *st = (stack *)malloc(sizeof(stack));
     st->pub = (publication *)malloc(sizeof(publication));
@@ -47,7 +20,9 @@ stack *get_ptr_by_index(stack *head, int index){
         return NULL;
     }
 }
-
+publication *get_element_by_index(stack *head, int index){
+    return get_ptr_by_index(head, index)->pub;
+}
 int push_index(stack **head, publication *pub, int index){
     stack *p = get_ptr_by_index(*head, index);
     if (p != NULL){

@@ -1,4 +1,5 @@
 #pragma once
+#include <stdlib.h>
 typedef struct publication{
     // char *name_publication;
     // char *surname;
@@ -10,4 +11,4 @@ typedef struct publication{
     int pages;
     int cout_quotes;
 }publication;
-
+publication *creat_publication();

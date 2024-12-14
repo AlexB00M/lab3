@@ -10,11 +10,11 @@ typedef struct stack{
 
 // Initiatisation
 stack *create_stack(stack *before);//char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC,
-publication *creat_publication(int pages, int cout_quotes);
 
 // Index
 stack *get_ptr_by_index(stack *head, int index);
 stack *next_stack(stack *head, publication *pub);
+publication *get_element_by_index(stack *head, int index);
 
 // Size
 int stack_size(stack *head);
