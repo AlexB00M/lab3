@@ -1,5 +1,4 @@
 #pragma once
-#include "sort.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -12,5 +11,3 @@ typedef struct start_params{
 }start_params;
 
 start_params *get_params(int argc, char *argv[]);
-void print(char *arg);
-void generate(char *argv);

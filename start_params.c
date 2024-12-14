@@ -1,19 +1,12 @@
 #include "start_params.h"
 
-void print(char*argv){
-    
-}
-
-void generate(char *argv){
-
-}
-
 start_params *get_params(int argc, char *argv[]){
     start_params *params = (start_params *)malloc(sizeof(start_params));
     params->command = NULL;
     params->file_name_in = NULL;
     params->file_name_out = NULL;
     params->sort_type = NULL;
+    params->generate = 0;
     char *str;
 
     for (int i = 1; i < argc; i++){
@@ -21,6 +14,7 @@ start_params *get_params(int argc, char *argv[]){
         if (strcmp(argv[i], "-P") == 0 || strcmp(argv[i], "-print") == 0) {
             params->command = "-P";
         } else if (strcmp(argv[i], "-g") == 0 || strcmp(argv[i], "--generate") == 0) {
+            params->command = "-g";
             params->generate = atoi(argv[i + 1]);
         } else if (strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--sort") == 0) {
             params->command = "-s";

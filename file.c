@@ -1,11 +1,23 @@
 #include "file.h"
 
-void write_file(const char *file_name, stack *head){
+void write_file(const char *file_name, stack *head, int colum_width){
     FILE *file = fopen(file_name, "w");
     publication *p;
-    for (int i = 0; i < stack_size(head); i++){
-        p = get_element_by_index(head, i);
-        fprintf(file, "%d,%d\n", p->pages, p->cout_quotes);
+    if (strstr(file_name, ".csv") != NULL){
+        for (int i = 0; i < stack_size(head); i++){
+            p = get_element_by_index(head, i);
+            char *tf = yes_no(p->in_RINC);
+            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d\n", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
+            free(tf);
+        }
+    } else if (strstr(file_name, ".txt") != NULL){
+        for (int i = 0; i < stack_size(head); i++){
+            p = get_element_by_index(head, i);
+            char *tf = yes_no(p->in_RINC);
+            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d\n", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
+            fprintf(file, "%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d\n",colum_width, p->name_publication, colum_width, p->surname, colum_width, p->iinitials, colum_width, p->name_journal, colum_width, p->date, colum_width, p->tom, colum_width, tf, colum_width, p->pages, colum_width, p->cout_quotes);
+            free(tf);
+        }
     }
 }
 
@@ -22,11 +34,34 @@ void read_file(const char *file_name, stack **head){
     while ((read = getline(&line, &len, file)) != -1){
         publication *pub = creat_publication();
         char *token = strtok(line, ",");
+        char *str;
         int i = 0;
         while (token != NULL){
+            str = (char *)malloc(strlen(token));
             if (i == 0){
+                pub->name_publication = (char *)malloc(strlen(token));
+                strcpy(pub->name_publication, token);
+            } else if (i == 1){
+                pub->surname = (char *)malloc(strlen(token));
+                strcpy(pub->surname, token);
+            } else if (i == 2){
+                pub->iinitials = (char *)malloc(strlen(token));
+                strcpy(pub->iinitials, token);
+            } else if (i == 3){
+                pub->name_journal = (char *)malloc(strlen(token));
+                strcpy(pub->name_journal, token);
+            } else if (i == 4){
+                pub->date = atoi(token);
+            } else if (i == 5){
+                pub->tom = atoi(token);
+            } else if (i == 6){
+                if (strcmp(token, "YES") == 0)
+                    pub->in_RINC = true;
+                else
+                    pub->in_RINC = false;
+            } else if (i == 7){
                 pub->pages = atoi(token);
-            }  else if (i == 1){
+            } else if (i == 8){
                 pub->cout_quotes = atoi(token);
             }
             token = strtok(NULL, ","); 

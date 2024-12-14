@@ -161,3 +161,22 @@ void change_elements(stack **head, publication *pub1, publication *pub2) {
     st1->before = st2->before;
     st2->before = temp;
 }
+
+void generate_stack(int n, stack **head, int max_len_string, int min_len_string, int max_int, int min_int){
+    init_random();
+    for (int i = 0; i < n; i++){
+        publication *pub = creat_publication();
+
+        pub->name_publication = random_string(max_len_string, min_len_string);
+        pub->surname = random_string(max_len_string, min_len_string);
+        pub->iinitials = random_string(max_len_string, min_len_string);
+        pub->name_journal = random_string(max_len_string, min_len_string);
+        pub->date = random_int(max_int, min_int);
+        pub->tom = random_int(max_int, min_int);
+        pub->in_RINC = rangdom_bool();
+        pub->pages = random_int(max_int, min_int);
+        pub->cout_quotes = random_int(max_int, min_int);
+
+        push_front(&(*head), pub);
+    }
+}

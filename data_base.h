@@ -1,7 +1,7 @@
 #pragma once
 #include <stdlib.h>
-#include <stdbool.h>
 #include "publication.h"
+#include "random.h"
 
 typedef struct stack{
     publication *pub;
@@ -9,7 +9,7 @@ typedef struct stack{
 }stack;
 
 // Initiatisation
-stack *create_stack(stack *before);//char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC, 
+stack *create_stack(stack *before);
 
 // Index
 stack *get_ptr_by_index(stack *head, int index);
@@ -38,3 +38,6 @@ publication *prev_element(stack *head, publication *pub);
 
 // Change
 void change_elements(stack **head, publication *pub1, publication *pub2);
+
+// Generate
+void generate_stack(int n, stack **head, int max_len_string, int min_len_string, int max_int, int min_int);
