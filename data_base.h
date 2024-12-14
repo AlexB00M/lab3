@@ -9,7 +9,7 @@ typedef struct stack{
 }stack;
 
 // Initiatisation
-stack *create_stack(stack *before);//char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC,
+stack *create_stack(stack *before);//char *name_publication, char *surname, char *iinitials, char *name_journal, int date, int tom, bool in_RINC, 
 
 // Index
 stack *get_ptr_by_index(stack *head, int index);
