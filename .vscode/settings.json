@@ -1,6 +1,8 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "data_base.h": "c"
+        "data_base.h": "c",
+        "stdbool.h": "c",
+        "start_params.h": "c"
     }
 }

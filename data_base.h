@@ -1,18 +1,7 @@
+#pragma once
 #include <stdlib.h>
 #include <stdbool.h>
-
-typedef struct publication{
-    // char *name_publication;
-    // char *surname;
-    // char *iinitials;
-    // char *name_journal;
-    // int date;
-    // int tom;
-    // bool in_RINC;
-    int pages;
-    int cout_quotes;
-}publication;
-
+#include "publication.h"
 
 typedef struct stack{
     publication *pub;
