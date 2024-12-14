@@ -7,16 +7,22 @@ void write_file(const char *file_name, stack *head, int colum_width){
         for (int i = 0; i < stack_size(head); i++){
             p = get_element_by_index(head, i);
             char *tf = yes_no(p->in_RINC);
-            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d\n", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
+            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
             free(tf);
+            if (i < stack_size(head) - 1) {
+                fprintf(file, "\n"); 
+            }
         }
     } else if (strstr(file_name, ".txt") != NULL){
         fprintf(file, "%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d\n",colum_width, "Название публикации", colum_width, "Фамилия", colum_width, "Инициалы", colum_width, "Название журнала", colum_width, "Год публикации", colum_width, "Том", colum_width, "Входит в РИНЦ", colum_width, "Страницы", colum_width, "Голоса");
         for (int i = 0; i < stack_size(head); i++){
             p = get_element_by_index(head, i);
             char *tf = yes_no(p->in_RINC);
-            fprintf(file, "%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d\n",colum_width, p->name_publication, colum_width, p->surname, colum_width, p->iinitials, colum_width, p->name_journal, colum_width, p->date, colum_width, p->tom, colum_width, tf, colum_width, p->pages, colum_width, p->cout_quotes);
+            fprintf(file, "%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d",colum_width, p->name_publication, colum_width, p->surname, colum_width, p->iinitials, colum_width, p->name_journal, colum_width, p->date, colum_width, p->tom, colum_width, tf, colum_width, p->pages, colum_width, p->cout_quotes);
             free(tf);
+            if (i > stack_size(head) - 1) {
+                fprintf(file, "\n");
+            }
         }
     }
     fclose(file);
