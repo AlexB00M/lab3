@@ -25,6 +25,7 @@ publication *creat_publication(int pages, int cout_quotes);
 
 // Index
 stack *get_ptr_by_index(stack *head, int index);
+stack *next_stack(stack *head, publication *pub);
 
 // Size
 int stack_size(stack *head);
@@ -43,5 +44,8 @@ int pop_end(stack **head);
 stack *stack_tail(stack *head);
 
 // Ptr
-publication *next_at_ptr(stack *head, publication *pub);
-publication *prev_at_ptr(stack *head, publication *pub);
+publication *next_element(stack *head, publication *pub);
+publication *prev_element(stack *head, publication *pub);
+
+// Change
+void change_elements(stack **head, publication *pub1, publication *pub2);

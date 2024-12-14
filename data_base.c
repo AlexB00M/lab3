@@ -137,7 +137,7 @@ stack *stack_tail(stack *head){
     return NULL; // no elements
 }
 
-publication *next_at_ptr(stack *head, publication *pub){
+publication *next_element(stack *head, publication *pub){
     stack *tmp = head;
     while (tmp->before->pub != pub){
         tmp = tmp->before;
@@ -145,7 +145,7 @@ publication *next_at_ptr(stack *head, publication *pub){
     return tmp->pub;
 }
 
-publication *prev_at_ptr(stack *head, publication *pub){
+publication *prev_element(stack *head, publication *pub){
     stack *tmp = head;
     while (tmp->pub != pub){
         tmp = tmp->before;
@@ -153,3 +153,37 @@ publication *prev_at_ptr(stack *head, publication *pub){
     return tmp->before->pub; 
 }
 
+stack *next_stack(stack *head, publication *pub) {
+    stack *tmp = head;
+    while (tmp != NULL && tmp->before != NULL) {
+        if (tmp->before->pub == pub) {
+            return tmp;
+        }
+        tmp = tmp->before;
+    }
+    return NULL;
+}
+void change_elements(stack **head, publication *pub1, publication *pub2) {
+    if (pub1 == pub2) return;
+
+    stack *prev1 = NULL, *prev2 = NULL;
+    stack *st1 = NULL, *st2 = NULL;
+
+    if ((*head)->pub != pub1) prev1 = next_stack(*head, pub1);
+    if ((*head)->pub != pub2) prev2 = next_stack(*head, pub2);
+
+    st1 = (prev1 == NULL) ? *head : prev1->before;
+    st2 = (prev2 == NULL) ? *head : prev2->before;
+
+    if (st1 == NULL || st2 == NULL) return;
+
+    if (prev1 != NULL) prev1->before = st2;
+    else *head = st2; 
+
+    if (prev2 != NULL) prev2->before = st1;
+    else *head = st1; 
+
+    stack *temp = st1->before;
+    st1->before = st2->before;
+    st2->before = temp;
+}

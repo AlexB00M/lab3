@@ -20,10 +20,8 @@ int main(int argc, char *argv[]){
     push_front(&head, pub4);
     print_stack(head);
     printf("###########\n");
-    publication *p = next_at_ptr(head, pub3);
-    print_publication(p);
-    p = prev_at_ptr(head, pub3);
-    print_publication(p);
+    change_elements(&head, pub1, pub4);
+    print_stack(head);
     return 0;
 }
 void print_stack(stack *head){
