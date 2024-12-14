@@ -1,6 +1,4 @@
 #include "data_base.h"
-#include <stdio.h>
-
 stack *create_stack(stack *before){
     stack *st = (stack *)malloc(sizeof(stack));
     st->pub = (publication *)malloc(sizeof(publication));
@@ -236,7 +234,6 @@ publication **stack_to_array(stack **head){
 }
 
 stack *array_to_stack(publication **array, int size){
-    printf("%d\n", size);
     stack *head = NULL;
     for (int i = 0; i < size; i++){
         push_front(&head, array[i]);
