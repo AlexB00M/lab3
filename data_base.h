@@ -29,7 +29,7 @@ int pop_index(stack **head, int index);
 int pop_front(stack **head);
 int pop_end(stack **head);
 
-// tail
+// Tail
 stack *stack_tail(stack *head);
 
 // Ptr
@@ -41,3 +41,11 @@ void change_elements(stack **head, publication *pub1, publication *pub2);
 
 // Generate
 void generate_stack(int n, stack **head, int max_len_string, int min_len_string, int max_int, int min_int);
+
+// Clean
+void clean_stack(stack **head);
+void clean_array(publication **array);
+
+// Array
+publication **stack_to_array(stack **head);
+stack *array_to_stack(publication **array, int size);

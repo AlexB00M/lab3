@@ -1,4 +1,5 @@
 #include "data_base.h"
+#include <stdio.h>
 
 stack *create_stack(stack *before){
     stack *st = (stack *)malloc(sizeof(stack));
@@ -20,9 +21,11 @@ stack *get_ptr_by_index(stack *head, int index){
         return NULL;
     }
 }
+
 publication *get_element_by_index(stack *head, int index){
     return get_ptr_by_index(head, index)->pub;
 }
+
 int push_index(stack **head, publication *pub, int index){
     stack *p = get_ptr_by_index(*head, index);
     if (p != NULL){
@@ -137,6 +140,45 @@ stack *next_stack(stack *head, publication *pub) {
     }
     return NULL;
 }
+    char *name_publication;
+    char *surname;
+    char *iinitials;
+    char *name_journal;
+    int date;
+    int tom;
+    bool in_RINC;
+    int pages;
+    int cout_quotes;
+
+void clean_stack(stack **head){
+    stack *tmp = *head;
+    while (tmp != NULL) {
+        free(tmp->pub->name_publication);
+        free(tmp->pub->surname);
+        free(tmp->pub->iinitials);
+        free(tmp->pub->name_journal);
+        
+        stack *next = tmp->before;
+        free(tmp->pub);
+        free(tmp);
+        tmp = next;
+    }
+
+    *head = NULL;
+}
+
+void clean_array(publication **array){
+    int size = sizeof(array)/sizeof(publication);
+    for (int i = 0; i < size; i++) {
+        free(array[i]->name_publication);
+        free(array[i]->surname);
+        free(array[i]->iinitials);
+        free(array[i]->name_journal);
+        free(array[i]);
+    }
+
+    free(array);
+}
 void change_elements(stack **head, publication *pub1, publication *pub2) {
     if (pub1 == pub2) return;
 
@@ -179,4 +221,26 @@ void generate_stack(int n, stack **head, int max_len_string, int min_len_string,
 
         push_front(&(*head), pub);
     }
+
+}
+
+publication **stack_to_array(stack **head){
+    int size = stack_size(*head);
+    publication **array = (publication **)malloc(sizeof(publication*)*size);
+    for(int i = 0; i < size; i++){
+        *(array + i) = get_element_by_index(*head, i);
+    }
+    *head = NULL;
+    clean_stack(head);
+    return array;
+}
+
+stack *array_to_stack(publication **array, int size){
+    printf("%d\n", size);
+    stack *head = NULL;
+    for (int i = 0; i < size; i++){
+        push_front(&head, array[i]);
+    }
+    clean_array(array);
+    return head;
 }

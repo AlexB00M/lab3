@@ -16,27 +16,41 @@ void print_table(stack *head, int width);
 void get_str(char *str);
 
 int main(int argc, char *argv[]){
-    start_params *params = get_params(argc, argv);
+    // start_params *params = get_params(argc, argv);
     stack *head = NULL;
-    start(params, &head);
+    // start(params, &head);
     // read_file("data.csv", &head);
     // write_file("output.csv", head);
     // printf("%s %s %s %d %s", params->command, params->file_name_in, params->file_name_out, params->generate, params->sort_type);
-    // publication *pub1 = creat_publication(1, 1);
-    // publication *pub2 = creat_publication(2, 2);
-    // publication *pub3 = creat_publication(3, 3);
-    // publication *pub4 = creat_publication(4, 4);
-    // push_front(&head, pub1);
-    // print_stack(head);
-    // push_front(&head, pub2);
-    // print_stack(head);
-    // push_front(&head, pub3);
-    // print_stack(head);
-    // push_front(&head, pub4);
-    // print_stack(head);
-    // printf("###########\n");
-    // change_elements(&head, pub1, pub4);
-    // print_stack(head);
+    publication *pub1 = creat_publication();
+    pub1->cout_quotes = 10;
+    pub1->date = 123;
+    publication *pub2 = creat_publication();
+    pub2->cout_quotes = 10;
+    pub2->date = 123;
+    publication *pub3 = creat_publication();
+    pub3->cout_quotes = 10;
+    pub3->date = 123;
+    publication *pub4 = creat_publication();
+    pub4->cout_quotes = 10;
+    pub4->date = 123;
+    push_front(&head, pub1);
+    print_stack(head);
+    push_front(&head, pub2);
+    print_stack(head);
+    push_front(&head, pub3);
+    print_stack(head);
+    push_front(&head, pub4);
+    print_stack(head);
+    printf("###########\n");
+    change_elements(&head, pub1, pub4);
+    int size = stack_size(head);
+    publication **array = stack_to_array(&head);
+    for(int i = 0; i < 4; i++){
+        printf("%d ", array[i]->cout_quotes);
+    }
+    head = array_to_stack(array, size);   
+    print_stack(head);
     return 0;
 }
 
