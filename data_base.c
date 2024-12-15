@@ -1,4 +1,5 @@
 #include "data_base.h"
+#include <stdio.h>
 stack *create_stack(stack *before){
     stack *st = (stack *)malloc(sizeof(stack));
     st->pub = (publication *)malloc(sizeof(publication));
@@ -202,22 +203,34 @@ void change_elements(stack **head, publication *pub1, publication *pub2) {
     st2->before = temp;
 }
 
-void generate_stack(int n, stack **head, int max_len_string, int min_len_string, int max_int, int min_int){
+void generate_stack(int n, stack **head){
     init_random();
     for (int i = 0; i < n; i++){
         publication *pub = creat_publication();
-
-        pub->name_publication = random_string(max_len_string, min_len_string);
-        pub->surname = random_string(max_len_string, min_len_string);
-        pub->iinitials = random_string(max_len_string, min_len_string);
-        pub->name_journal = random_string(max_len_string, min_len_string);
-        pub->date = random_int(max_int, min_int);
-        pub->tom = random_int(max_int, min_int);
+        char *names[] = {"Как улучшить производительность", "Тренды машинного обучения", "Обзор библиотек для веба", "Основы искусственного интеллекта", "Новые технологии для стартапов", "Как выбрать технологию", "Оптимизация баз данных", "Программирование на Python", "Будущее фронтенд-разработки", "Как работать с API", "Введение в многозадачность", "Использование Docker", "Искусственный интеллект", "Обзор популярных CMS", "Лучшие практики безопасности", "Выбор фреймворка для веба", "Обучение с подкреплением", "Разработка для IoT", "Оптимизация кода", "Как стать успешным разработчиком"};
+        char *surnames[] = {"Иванов", "Петров", "Сидоров", "Морозов", "Кузнецов", "Попов", "Васильев", "Смирнов", "Ковалев", "Федоров", "Дмитриев", "Новиков", "Захаров", "Лебедев", "Чернов", "Горячев", "Тимофеев", "Алексеев", "Королев", "Макаров", "Романов", "Тихонов", "Орлов", "Белый", "Соловьев", "Семенов"};
+        char *iinitials[] = {"И.И.", "П.П.", "С.С.", "М.М.", "К.К.", "П.П.", "В.В.", "С.С.", "К.К.", "Ф.Ф.", "Д.Д.", "Н.Н.", "З.З.", "Л.Л.", "Ч.Ч.", "Г.Г.", "Т.Т.", "А.А.", "К.К.", "М.М.", "Р.Р.", "Т.Т.", "О.О.", "Б.Б.", "С.С.", "С.С."};
+        char *journal_names[] = {
+            "Научный прогресс", "Технологии будущего", "Искусственный интеллект", 
+            "Разработка программного обеспечения", "Мир технологий", "Программирование сегодня", 
+            "Базы данных и системы", "Тренды в IT", "Компьютерные науки", "Инновации в бизнесе", 
+            "Мобильные технологии", "Разработка на Python", "Веб-разработка", 
+            "Современные технологии", "Технологии и стартапы", "IT-эксперт", "Цифровая трансформация", 
+            "Интернет вещей", "Разработка приложений", "Будущее технологий", 
+            "Программирование и алгоритмы", "Современные CMS", "Технологии безопасности", 
+            "Искусственный интеллект и бизнес", "Облачные технологии"
+        };
+        pub->name_publication = random_string(names, 25);
+        pub->surname = random_string(surnames, 25);
+        pub->iinitials = random_string(iinitials, 25);
+        pub->name_journal = random_string(journal_names, 25);
+        pub->date = random_int(1950, 2024);
+        pub->tom = random_int(1, 10);
         pub->in_RINC = rangdom_bool();
-        pub->pages = random_int(max_int, min_int);
-        pub->cout_quotes = random_int(max_int, min_int);
+        pub->pages = random_int(20, 100);
+        pub->cout_quotes = random_int(50, 200);
 
-        push_front(&(*head), pub);
+        push_front(head, pub);
     }
 
 }

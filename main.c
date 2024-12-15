@@ -3,17 +3,13 @@
 #include "start_params.h"
 #include "file.h"
 #include "sort.h"
-#define MAX_LEN_STRING 10
-#define MIN_LEN_STRING 10
-#define MAX_INT 10
-#define MIN_INT 10
-#define CULUM_WIDTH 50
+#define WIDTH 40
 
 void print_stack(stack *head);
 void print_publication(publication *p);
 void start(start_params *params, stack **head);
 void read_file(const char *file_name, stack **head);
-void print_table(stack *head, int width);
+void print_table(stack *head, int colum_width);
 void get_str(char *str);
 void read_input(stack **head);
 
@@ -24,14 +20,13 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-void print_table(stack *head, int width){
-    publication *p;
-    int colum_width = width/2;
-    printf("%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d\n",colum_width, "Название публикации", colum_width, "Фамилия", colum_width, "Инициалы", colum_width, "Название журнала", colum_width, "Год публикации", colum_width, "Том", colum_width, "Входит в РИНЦ", colum_width, "Страницы", colum_width, "Голоса");
+void print_table(stack *head, int colum_width){
+    publication *p;;
+    printf("%-50s%-20s%-10s%-50s%-10s%-10s%-10s%-10s%-10s\n","Название публикации","Фамилия","Инициалы", "Название журнала", "Год публикации", "Том", "Входит в РИНЦ", "Страницы", "Голоса");
     for (int i = 0; i < stack_size(head); i++){
         p = get_element_by_index(head, i);
         char *tf = yes_no(p->in_RINC);
-        printf("%-*s%-*s%-*s%-*s%-*d%-*d%-*s%-*d%-*d\n",colum_width, p->name_publication, colum_width, p->surname, colum_width, p->iinitials, colum_width, p->name_journal, colum_width, p->date, colum_width, p->tom, colum_width, tf, colum_width, p->pages, colum_width, p->cout_quotes);
+        printf("%-50s%-20s%-10s%-50s%-10d%-10d%-10s%-10d%-10d\n",p->name_publication, p->surname, p->iinitials, p->name_journal, p->date, p->tom, tf, p->pages, p->cout_quotes);
         free(tf);
     }   
 }
@@ -67,23 +62,23 @@ void get_str(char *str){
 void start(start_params *params, stack **head){
     // printf("%s %s %s %d %s\n", params->command, params->file_name_in, params->file_name_out, params->generate, params->sort_type);
     int n;
-    if ((params->command, "-P") == 0){
+    if (strcmp(params->command, "-P") == 0){
         if (params->file_name_in == NULL){
             params->file_name_in = (char *)malloc(100);
             scanf("%s", params->file_name_in);
         }
         read_file(params->file_name_in, head);
         if (params->file_name_out == NULL){
-            print_table(*head, CULUM_WIDTH);
+            print_table(*head, WIDTH);
         } else {
-            write_file(params->file_name_out, *head, CULUM_WIDTH);
+            write_file(params->file_name_out, *head, WIDTH);
         }
     } else if (strcmp(params->command, "-g") == 0){
-        generate_stack(params->generate, &(*head), MAX_LEN_STRING, MIN_LEN_STRING, MAX_INT, MIN_INT);
+        generate_stack(params->generate, head);
         if (params->file_name_out == NULL){
             print_stack(*head);
         } else {
-            write_file(params->file_name_out, *head, CULUM_WIDTH);
+            write_file(params->file_name_out, *head, WIDTH);
         }
     } else if (strcmp(params->command, "-s") == 0){
         if (params->file_name_in != NULL){
@@ -99,7 +94,7 @@ void start(start_params *params, stack **head){
             sort(head, 1, compare_publications);
         }
         if (params->file_name_out != NULL){
-            write_file(params->file_name_out, *head, CULUM_WIDTH);
+            write_file(params->file_name_out, *head, WIDTH);
         } else {
             print_stack(*head);
         }

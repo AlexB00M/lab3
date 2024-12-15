@@ -7,4 +7,4 @@
 void init_random();
 int random_int(int max, int min);
 bool rangdom_bool();
-char *random_string(int max, int min);
+char *random_string(char **strings, int size);

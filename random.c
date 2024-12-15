@@ -1,5 +1,6 @@
 #include "random.h"
 
+
 void init_random() {
     srand(time(NULL));
 }
@@ -13,20 +14,13 @@ bool rangdom_bool(){
     }
 }
 
-int random_int(int max, int min){
-    return rand() % max + min;
+int random_int(int min, int max){
+    return rand() % (max - min + 1) + min;
 }
 
-char *random_string(int max, int min){
-    int length = random_int(max, min);
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char *random_string = (char *)malloc(length + 1);
-    int key;
-
-    for (int i = 0; i < length; i++) {
-        key = random_int(strlen(charset), 0);  
-        random_string[i] = charset[key];
-    }
-    random_string[length] = '\0';
-    return random_string;
+char *random_string(char **strings, int size){
+    int i = random_int(0, size);
+    char *s = (char *)malloc(strlen(strings[i]) + 1);
+    strcpy(s, strings[i]);
+    return s;
 }

@@ -5,6 +5,9 @@ int compare_publications(const void *a, const void *b) {
     const publication *pub_b = (const publication *)b;
     int str_comparison;
 
+    if (pub_a->date < pub_b->date) return -1;
+    if (pub_a->date > pub_b->date) return 1;
+
     if (pub_a->pages < pub_b->pages) return -1;
     if (pub_a->pages > pub_b->pages) return 1;
 
@@ -13,9 +16,6 @@ int compare_publications(const void *a, const void *b) {
     
     if (pub_a->tom < pub_b->tom) return -1;
     if (pub_a->tom > pub_b->tom) return 1;
-
-    if (pub_a->date < pub_b->date) return -1;
-    if (pub_a->date > pub_b->date) return 1;
 
     if (pub_a->in_RINC < pub_b->in_RINC) return -1;
     if (pub_a->in_RINC > pub_b->in_RINC) return 1;

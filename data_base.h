@@ -40,7 +40,7 @@ publication *prev_element(stack *head, publication *pub);
 void change_elements(stack **head, publication *pub1, publication *pub2);
 
 // Generate
-void generate_stack(int n, stack **head, int max_len_string, int min_len_string, int max_int, int min_int);
+void generate_stack(int n, stack **head);
 
 // Clean
 void clean_stack(stack **head);
