@@ -14,7 +14,7 @@ void write_file(const char *file_name, stack *head, int colum_width){
             }
         }
     } else if (strstr(file_name, ".txt") != NULL){
-        printf("%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
+        fprintf(file, "%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
             "PUBLICATION NAME",
             "SURMANE",
             "IINITZIALS",
@@ -27,7 +27,7 @@ void write_file(const char *file_name, stack *head, int colum_width){
         for (int i = 0; i < stack_size(head); i++){
             p = get_element_by_index(head, i);
             char *tf = yes_no(p->in_RINC);
-            printf("%-60s%-20s%-20s%-50s%-10d%-10d%-10s%-10d%-10d\n",
+            fprintf(file, "%-60s%-20s%-20s%-50s%-10d%-10d%-10s%-10d%-10d",
                p->name_publication,
                p->surname,
                p->iinitials,
@@ -38,7 +38,7 @@ void write_file(const char *file_name, stack *head, int colum_width){
                p->pages,
                p->cout_quotes);
             free(tf);
-            if (i > stack_size(head) - 1) {
+            if (i < stack_size(head) - 1) {
                 fprintf(file, "\n");
             }
         }
