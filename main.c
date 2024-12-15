@@ -20,16 +20,35 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-void print_table(stack *head, int colum_width){
-    publication *p;;
-    printf("%-50s%-20s%-10s%-50s%-10s%-10s%-10s%-10s%-10s\n","Название публикации","Фамилия","Инициалы", "Название журнала", "Год публикации", "Том", "Входит в РИНЦ", "Страницы", "Голоса");
-    for (int i = 0; i < stack_size(head); i++){
+void print_table(stack *head, int colum_width) {
+    publication *p;
+    printf("%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
+           "PUBLICATION NAME",
+           "SURMANE",
+           "IINITZIALS",
+           "JOURNAL NAME",
+           "DATE",
+           "TOM",
+           "IN RINC",
+           "PAGES",
+           "QUOTES");
+
+    for (int i = 0; i < stack_size(head); i++) {
         p = get_element_by_index(head, i);
-        char *tf = yes_no(p->in_RINC);
-        printf("%-50s%-20s%-10s%-50s%-10d%-10d%-10s%-10d%-10d\n",p->name_publication, p->surname, p->iinitials, p->name_journal, p->date, p->tom, tf, p->pages, p->cout_quotes);
-        free(tf);
-    }   
+        const char *tf = yes_no(p->in_RINC);
+        printf("%-60s%-20s%-20s%-50s%-10d%-10d%-10s%-10d%-10d\n",
+               p->name_publication,
+               p->surname,
+               p->iinitials,
+               p->name_journal,
+               p->date,
+               p->tom,
+               tf,
+               p->pages,
+               p->cout_quotes);
+    }
 }
+
 
 void print_stack(stack *head){
     publication *p;
