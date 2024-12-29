@@ -1,6 +1,6 @@
 #include "file.h"
 
-void write_file(const char *file_name, stack *head, int colum_width){
+void write_file(char *file_name, stack *head, int colum_width){
     FILE *file = fopen(file_name, "w");
     publication *p;
     if (strstr(file_name, ".csv") != NULL){
@@ -17,7 +17,7 @@ void write_file(const char *file_name, stack *head, int colum_width){
         fprintf(file, "%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
             "PUBLICATION NAME",
             "SURMANE",
-            "IINITZIALS",
+            "INITZIALS",
             "JOURNAL NAME",
             "DATE",
             "TOM",
@@ -46,7 +46,7 @@ void write_file(const char *file_name, stack *head, int colum_width){
     fclose(file);
 }
 
-void read_file(const char *file_name, stack **head){
+void read_file(char *file_name, stack **head){
     FILE *file = fopen(file_name, "r");
     char *line = NULL;  
     size_t len = 0;    
@@ -91,7 +91,7 @@ void read_file(const char *file_name, stack **head){
             token = strtok(NULL, ","); 
             i++;
         }
-        push_front(&(*head), pub);
+        push_front(head, pub);
     }
     fclose(file);
 }

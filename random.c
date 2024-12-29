@@ -19,7 +19,7 @@ int random_int(int min, int max){
 }
 
 char *random_string(char **strings, int size){
-    int i = random_int(0, size);
+    int i = random_int(0, size - 1);
     char *s = (char *)malloc(strlen(strings[i]) + 1);
     strcpy(s, strings[i]);
     return s;

@@ -1,21 +1,21 @@
-PUBLICATION NAME                                            SURMANE             IINITZIALS          JOURNAL NAME                                      DATE      TOM       IN RINC   PAGES     QUOTES    
-The Internet of Things: Connecting the World                Jackson             I. J.               Docker Usage                                      1975      10        NO        51        128       
-Automation in the Modern Workplace                          Thompson            G. J.               Reinforcement Learning                            1973      3         NO        30        149       
-Sustainable Technologies for the Future                     Martin              I. J.               Code Optimization                                 1954      5         NO        79        63        
-Exploring the Metaverse                                     Robinson            A. D.               Docker Usage                                      1959      5         NO        68        73        
-AI and the Future of Healthcare                             Wilson              F. I.               Docker Usage                                      1954      3         NO        85        129       
-The Internet of Things: Connecting the World                Anderson            U. V.               Artificial Intelligence Advances                  1978      1         NO        21        162       
-The Impact of 5G on Technology                              Robinson            S. T.               Reinforcement Learning                            1987      1         NO        63        156       
-Exploring the Metaverse                                     Smith               A. D.               Foundations of Artificial Intelligence            1988      3         NO        20        62        
-The Impact of 5G on Technology                              Martin              S. T.               Framework Selection for Web Development           2009      1         NO        62        172       
-Automation in the Modern Workplace                          Smith               O. P.               Foundations of Artificial Intelligence            1965      1         NO        67        130       
-The Rise of Edge Computing                                  Thompson            A. D.               Tech Performance Enhancements                     1972      7         NO        43        178       
-The Evolution of Digital Marketing                          Anderson            A. D.               Working with APIs                                 1979      5         NO        85        133       
-Exploring Quantum Computing                                 Davis               G. J.               Web Libraries Review                              1996      8         NO        40        60        
-Innovations in Data Science                                 Robinson            Y. Z.               Web Libraries Review                              1981      8         NO        51        132       
-Exploring Quantum Computing                                 Moore               M. N.               Introduction to Multitasking                      1973      10        NO        96        73        
-Future Trends in Software Development                       Moore               I. J.               Python Programming                                2016      1         NO        65        101       
-AI and the Future of Healthcare                             A. B.               E. H.               Reinforcement Learning                            2011      2         NO        91        76        
-Understanding Cybersecurity in 2024                         Jones               E. H.               Foundations of Artificial Intelligence            1950      10        NO        37        85        
-AI and the Future of Healthcare                             Jones               E. H.               Introduction to Multitasking                      1961      4         NO        78        154       
-Sustainable Technologies for the Future                     Johnson             G. H.               Database Optimization                             1974      5         NO        25        146       
+PUBLICATION NAME                                            SURMANE             INITZIALS           JOURNAL NAME                                      DATE      TOM       IN RINC   PAGES     QUOTES    
+Automation in the Modern Workplace                          Jones               Q. R.               Foundations of Artificial Intelligence            1953      5         NO        82        77        
+Understanding Cybersecurity in 2024                         Jackson             G. H.               Web Libraries Review                              1954      10        NO        85        111       
+Exploring the Metaverse                                     Johnson             C. F.               Python Programming                                1956      1         NO        35        96        
+Cloud Computing: The Next Frontier                          Davis               F. I.               Becoming a Successful Developer                   1956      10        NO        53        168       
+Exploring the Metaverse                                     Thompson            W. X.               Best Security Practices                           1957      2         NO        98        177       
+The Evolution of Digital Marketing                          Robinson            U. V.               Choosing the Right Technology                     1965      8         NO        93        114       
+Cloud Computing: The Next Frontier                          Thomas              D. G.               Best Security Practices                           1974      3         NO        35        58        
+Trends in Web Development                                   Martin              U. V.               New Technologies for Startups                     1975      8         NO        41        118       
+Sustainable Technologies for the Future                     Martinez            A. D.               Becoming a Successful Developer                   1976      4         NO        36        93        
+AI and the Future of Healthcare                             Wilson              U. V.               Tech Performance Enhancements                     1983      10        NO        20        199       
+The Rise of Edge Computing                                  Anderson            M. N.               Web Libraries Review                              1989      1         NO        63        126       
+Automation in the Modern Workplace                          Moore               F. I.               Introduction to Multitasking                      1997      3         NO        69        89        
+The Future of Artificial Intelligence                       Davis               W. X.               Framework Selection for Web Development           2003      10        NO        35        67        
+Exploring Quantum Computing                                 Martin              E. H.               Database Optimization                             2005      6         NO        28        182       
+The Impact of 5G on Technology                              Anderson            U. V.               Code Optimization                                 2008      2         NO        76        151       
+Virtual Reality: Revolutionizing Entertainment              Martin              Y. Z.               Foundations of Artificial Intelligence            2011      10        NO        85        177       
+Understanding Cybersecurity in 2024                         Martinez            M. N.               Working with APIs                                 2013      9         NO        36        84        
+Advancements in Machine Learning                            Johnson             A. D.               New Technologies for Startups                     2013      4         NO        92        137       
+Trends in Web Development                                   Jones               S. T.               Choosing the Right Technology                     2014      4         NO        32        86        
+Exploring Quantum Computing                                 Wilson              D. G.               Reinforcement Learning                            2015      2         NO        31        144       

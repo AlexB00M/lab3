@@ -28,38 +28,26 @@ int compare_publications(const void *a, const void *b) {
 }
 
 void sort(stack **head, int revers, int (*compare)(const void *, const void *)){
-    if (*head == NULL) return;
     int size = stack_size(*head);
-    publication **array = stack_to_array(head);
 
-    int left = 0, right = size - 1;
-    int swapped = 1;
+    int left = 0;
+    int right = size - 1;
 
-    while (left < right && swapped) {
-        swapped = 0;
+    while (left < right) {
 
         for (int i = left; i < right; i++) {
-            if ((revers == 0 && compare(array[i], array[i + 1]) > 0) ||
-                (revers == 1 && compare(array[i], array[i + 1]) < 0)) {
-                publication *temp = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = temp;
-                swapped = 1;
+            if ((revers == 0 && compare(get_element_by_index(*head, i), get_element_by_index(*head, i + 1)) > 0) || (revers == 1 && compare(get_element_by_index(*head, i), get_element_by_index(*head, i + 1)) < 0)) {
+                change_elements(head, get_element_by_index(*head, i), get_element_by_index(*head, i + 1));
             }
         }
         right--;
 
         for (int i = right; i > left; i--) {
-            if ((revers == 0 && compare(array[i - 1], array[i]) > 0) ||
-                (revers == 1 && compare(array[i - 1], array[i]) < 0)) {
-                publication *temp = array[i];
-                array[i] = array[i - 1];
-                array[i - 1] = temp;
-                swapped = 1;
+            if ((revers == 0 && compare(get_element_by_index(*head, i), get_element_by_index(*head, i - 1)) < 0) || (revers == 1 && compare(get_element_by_index(*head, i), get_element_by_index(*head, i - 1)) > 0)) {
+                change_elements(head, get_element_by_index(*head, i), get_element_by_index(*head, i - 1));
             }
         }
         left++;
     }  
-    *head = array_to_stack(array, size);
-    free(array);
+
 }

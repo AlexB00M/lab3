@@ -4,6 +4,8 @@
         "data_base.h": "c",
         "stdbool.h": "c",
         "start_params.h": "c",
-        "publication.h": "c"
+        "publication.h": "c",
+        "random": "c",
+        "xutility": "c"
     }
 }

@@ -8,7 +8,6 @@
 void print_stack(stack *head);
 void print_publication(publication *p);
 void start(start_params *params, stack **head);
-void read_file(const char *file_name, stack **head);
 void print_table(stack *head, int colum_width);
 void get_str(char *str);
 void read_input(stack **head);
@@ -25,7 +24,7 @@ void print_table(stack *head, int colum_width) {
     printf("%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
            "PUBLICATION NAME",
            "SURMANE",
-           "IINITZIALS",
+           "INITZIALS",
            "JOURNAL NAME",
            "DATE",
            "TOM",
@@ -35,7 +34,7 @@ void print_table(stack *head, int colum_width) {
 
     for (int i = 0; i < stack_size(head); i++) {
         p = get_element_by_index(head, i);
-        const char *tf = yes_no(p->in_RINC);
+        char *tf = yes_no(p->in_RINC);
         printf("%-60s%-20s%-20s%-50s%-10d%-10d%-10s%-10d%-10d\n",
                p->name_publication,
                p->surname,
@@ -48,7 +47,6 @@ void print_table(stack *head, int colum_width) {
                p->cout_quotes);
     }
 }
-
 
 void print_stack(stack *head){
     publication *p;
@@ -155,7 +153,7 @@ void read_input(stack **head){
             token = strtok(NULL, ",");
             i++;
         }
-        push_front(&(*head), pub);
+        push_front(head, pub);
     }
     free(line);
 }
