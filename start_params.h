@@ -8,6 +8,6 @@ typedef struct start_params{
     char *file_name_out;
     int generate;
     char *sort_type;
-}start_params;
+} start_params;
 
 start_params *get_params(int argc, char *argv[]);

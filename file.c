@@ -1,13 +1,20 @@
 #include "file.h"
 
-void write_file(char *file_name, stack *head, int colum_width){
+void write_file(char *file_name, stack *head){
     FILE *file = fopen(file_name, "w");
     publication *p;
     if (strstr(file_name, ".csv") != NULL){
         for (int i = 0; i < stack_size(head); i++){
             p = get_element_by_index(head, i);
             char *tf = yes_no(p->in_RINC);
-            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
+            fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%d,%d", 
+                p->name_publication, 
+                p->surname, 
+                p->iinitials, 
+                p->name_journal, 
+                p->date,p->tom, 
+                tf, p->pages, 
+                p->cout_quotes);
             free(tf);
             if (i < stack_size(head) - 1) {
                 fprintf(file, "\n"); 

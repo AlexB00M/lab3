@@ -3,12 +3,11 @@
 #include "start_params.h"
 #include "file.h"
 #include "sort.h"
-#define WIDTH 40
 
 void print_stack(stack *head);
 void print_publication(publication *p);
 void start(start_params *params, stack **head);
-void print_table(stack *head, int colum_width);
+void print_table(stack *head);
 void get_str(char *str);
 void read_input(stack **head);
 
@@ -19,7 +18,7 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-void print_table(stack *head, int colum_width) {
+void print_table(stack *head) {
     publication *p;
     printf("%-60s%-20s%-20s%-50s%-10s%-10s%-10s%-10s%-10s\n",
            "PUBLICATION NAME",
@@ -36,15 +35,15 @@ void print_table(stack *head, int colum_width) {
         p = get_element_by_index(head, i);
         char *tf = yes_no(p->in_RINC);
         printf("%-60s%-20s%-20s%-50s%-10d%-10d%-10s%-10d%-10d\n",
-               p->name_publication,
-               p->surname,
-               p->iinitials,
-               p->name_journal,
-               p->date,
-               p->tom,
-               tf,
-               p->pages,
-               p->cout_quotes);
+            p->name_publication,
+            p->surname,
+            p->iinitials,
+            p->name_journal,
+            p->date,
+            p->tom,
+            tf,
+            p->pages,
+            p->cout_quotes);
     }
 }
 
@@ -57,7 +56,12 @@ void print_stack(stack *head){
     for (int i = 0; i < stack_size(head); i++){
         p = get_element_by_index(head, i);
         char *tf = yes_no(p->in_RINC);
-        printf("%s,%s,%s,%s,%d,%d,%s,%d,%d\n", p->name_publication, p->surname, p->iinitials, p->name_journal, p->date,p->tom, tf, p->pages, p->cout_quotes);
+        printf("%s,%s,%s,%s,%d,%d,%s,%d,%d\n", 
+            p->name_publication, p->surname, 
+            p->iinitials, p->name_journal, 
+            p->date,p->tom, tf, 
+            p->pages, 
+            p->cout_quotes);
         free(tf);
     }
 }
@@ -86,16 +90,16 @@ void start(start_params *params, stack **head){
         }
         read_file(params->file_name_in, head);
         if (params->file_name_out == NULL){
-            print_table(*head, WIDTH);
+            print_table(*head);
         } else {
-            write_file(params->file_name_out, *head, WIDTH);
+            write_file(params->file_name_out, *head);
         }
     } else if (strcmp(params->command, "-g") == 0){
         generate_stack(params->generate, head);
         if (params->file_name_out == NULL){
             print_stack(*head);
         } else {
-            write_file(params->file_name_out, *head, WIDTH);
+            write_file(params->file_name_out, *head);
         }
     } else if (strcmp(params->command, "-s") == 0){
         if (params->file_name_in != NULL){
@@ -111,7 +115,7 @@ void start(start_params *params, stack **head){
             sort(head, 1, compare_publications);
         }
         if (params->file_name_out != NULL){
-            write_file(params->file_name_out, *head, WIDTH);
+            write_file(params->file_name_out, *head);
         } else {
             print_stack(*head);
         }
@@ -120,12 +124,11 @@ void start(start_params *params, stack **head){
 
 void read_input(stack **head){
     char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
+    int len = 0;
 
     printf("Введите строки данных в формате CSV (для завершения нажмите Ctrl+Z):\n");
 
-    while ((read = getline(&line, &len, stdin)) != -1) {
+    while (getline(&line, &len, stdin) != -1) {
         publication *pub = creat_publication();
         char *token = strtok(line, ",");
         int i = 0;
